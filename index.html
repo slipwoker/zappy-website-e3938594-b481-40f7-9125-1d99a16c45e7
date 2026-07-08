@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>הפכו כל חלום למציאות מעוצבת — עטרה סבג אדריכלות ועיצוב פנים</title>
+    <meta name="description" content="מחפשים אדריכלית ומעצבת פנים שתהפוך את הבית או העסק שלכם ליצירת מופת? בסטודיו של עטרה סבג תקבלו תכנון אדריכלי ועיצוב פנים יוקרתי, מדויק ומלא השראה. לחצו עכשיו לחוויית עיצוב בלתי נשכחת!">
+    <meta name="keywords" content="עטרה סבג אדריכלות ועיצוב פנים, מעצבת פנים, עיצוב פנים בדרום, אדריכלות ועיצוב פנים, תכנון אדריכלי יוקרתי">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Zappy Analytics -->
+<script>
+(function() {
+  'use strict';
+  
+  // Configuration
+  var config = {
+    websiteId: 'e3938594-b481-40f7-9125-1d99a16c45e7',
+    apiUrl: 'https://api.zappy5.com/api/analytics/track',
+    sessionDuration: 30 * 60 * 1000, // 30 minutes
+    visitorDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
+    trackPageViews: true,
+    trackClicks: true,
+    trackFormSubmissions: true
+  };
+  
+  // Generate or retrieve persistent visitor ID (30 days)
+  function getVisitorId() {
+    var visitorKey = 'zappy_visitor_' + config.websiteId;
+    var visitor = null;
+    
+    try {
+      visitor = localStorage.getItem(visitorKey);
+      if (visitor) {
+        var visitorData = JSON.parse(visitor);
+        var now = Date.now();
+        
+        // Check if visitor ID is still valid (30 days)
+        if (now - visitorData.created < config.visitorDuration) {
+          // Update last seen timestamp
+          visitorData.lastSeen = now;
+          localStorage.setItem(visitorKey, JSON.stringify(visitorData));
+          return visitorData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: LocalStorage not available');
+    }
+    
+    // Generate new visitor ID
+    var newVisitorId = 'zv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      localStorage.setItem(visitorKey, JSON.stringify({
+        id: newVisitorId,
+        created: Date.now(),
+        lastSeen: Date.now()
+      }));
+    } catch (e) {
+      // Continue without local storage
+    }
+    
+    return newVisitorId;
+  }
+  
+  // Generate or retrieve session ID (30 minutes)
+  function getSessionId() {
+    var sessionKey = 'zappy_session_' + config.websiteId;
+    var session = null;
+    
+    try {
+      session = sessionStorage.getItem(sessionKey);
+      if (session) {
+        var sessionData = JSON.parse(session);
+        var now = Date.now();
+        
+        // Check if session is still valid
+        if (now - sessionData.timestamp < config.sessionDuration) {
+          // Update timestamp
+          sessionData.timestamp = now;
+          sessionStorage.setItem(sessionKey, JSON.stringify(sessionData));
+          return sessionData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: SessionStorage not available');
+    }
+    
+    // Generate new session ID
+    var newSessionId = 'zs_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      sessionStorage.setItem(sessionKey, JSON.stringify({
+        id: newSessionId,
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      // Continue without session storage
+    }
+    
+    return newSessionId;
+  }
+  
+  var visitorId = getVisitorId();
+  var sessionId = getSessionId();
+  
+  // Track an event
+  function trackEvent(eventType, data) {
+    data = data || {};
+    
+    var eventData = {
+      website_id: config.websiteId,
+      event_type: eventType,
+      page_path: window.location.pathname,
+      referrer: document.referrer || 'direct',
+      visitor_id: visitorId,
+      session_id: sessionId,
+      metadata: data
+    };
+    
+    // Use sendBeacon if available (better for page unload events)
+    if (navigator.sendBeacon) {
+      var blob = new Blob([JSON.stringify(eventData)], { type: 'application/json' });
+      navigator.sendBeacon(config.apiUrl, blob);
+    } else {
+      // Fallback to fetch
+      fetch(config.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData),
+        keepalive: true
+      }).catch(function(error) {
+        console.warn('Zappy Analytics: Failed to track event', error);
+      });
+    }
+  }
+  
+  // Track page view
+  if (config.trackPageViews) {
+    trackEvent('pageview', {
+      title: document.title,
+      url: window.location.href
+    });
+  }
+  
+  // Track clicks on important elements
+  if (config.trackClicks) {
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      
+      // Track button clicks (counted as actions)
+      if (target.tagName === 'BUTTON' || target.closest('button')) {
+        var button = target.tagName === 'BUTTON' ? target : target.closest('button');
+        var clickMeta = {
+          element: 'button',
+          text: button.textContent.trim().substring(0, 100),
+          id: button.id || null,
+          class: button.className || null
+        };
+        
+        trackEvent('click', clickMeta);
+      }
+      
+      // Track link clicks (navigation - not counted as actions)
+      else if (target.tagName === 'A' || target.closest('a')) {
+        var link = target.tagName === 'A' ? target : target.closest('a');
+        var navMeta = {
+          element: 'link',
+          text: link.textContent.trim().substring(0, 100),
+          href: link.href,
+          external: link.hostname !== window.location.hostname
+        };
+        
+        trackEvent('navigation', navMeta);
+      }
+    }, true);
+  }
+  
+  
+  // Track form submissions
+  if (config.trackFormSubmissions) {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      
+      trackEvent('form_submit', {
+        form_id: form.id || null,
+        form_name: form.name || null,
+        form_action: form.action || null,
+        form_method: form.method || 'GET'
+      });
+    }, true);
+  }
+  
+  // Track time on page (send on page unload)
+  var pageLoadTime = Date.now();
+  
+  window.addEventListener('beforeunload', function() {
+    var timeOnPage = Math.floor((Date.now() - pageLoadTime) / 1000); // in seconds
+    
+    trackEvent('page_unload', {
+      time_on_page: timeOnPage,
+      page_path: window.location.pathname
+    });
+  });
+  
+  // Expose tracking function globally for custom events
+  window.zappyAnalytics = {
+    track: trackEvent,
+    getVisitorId: function() { return visitorId; },
+    getSessionId: function() { return sessionId; }
+  };
+  
+})();
+</script>
+<!-- End Zappy Analytics -->
+    <meta property="og:title" content="הפכו כל חלום למציאות מעוצבת — עטרה סבג אדריכלות ועיצוב פנים">
+    <meta property="og:description" content="מחפשים אדריכלית ומעצבת פנים שתהפוך את הבית או העסק שלכם ליצירת מופת? בסטודיו של עטרה סבג תקבלו תכנון אדריכלי ועיצוב פנים יוקרתי, מדויק ומלא השראה. לחצו עכשיו לחוויית עיצוב בלתי נשכחת!">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="הפכו כל חלום למציאות מעוצבת — עטרה סבג אדריכלות ועיצוב פנים">
+    <meta name="twitter:description" content="מחפשים אדריכלית ומעצבת פנים שתהפוך את הבית או העסק שלכם ליצירת מופת? בסטודיו של עטרה סבג תקבלו תכנון אדריכלי ועיצוב פנים יוקרתי, מדויק ומלא השראה. לחצו עכשיו לחוויית עיצוב בלתי נשכחת!">
+    <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .skip-link { position: absolute; top: 0; left: 0; transform: translateY(-200%); padding: 12px 18px; background: var(--bg-dark, #1a1a1a); color: var(--text-light, #fff); font-weight: 600; border-radius: 0 0 8px 0; z-index: 10000; }
+    .skip-link:focus { transform: none; outline: 2px solid var(--ring, #fff); outline-offset: 2px; }
+    :focus-visible { outline: 2px solid var(--ring, currentColor); outline-offset: 3px; }
+  </style>
+
+
+  
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+    <!-- Mickidum Accessibility Toolbar -->
+    <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <script>window.ZAPPY_WEBSITE_ID = "e3938594-b481-40f7-9125-1d99a16c45e7"; window.ZAPPY_API_BASE = "https://api.zappy5.com";</script>
+    <link rel="preload" as="image" href="/assets/site-index-hero-image-1.webp" fetchpriority="high">
+
+    <style id="zappy-dropdown-submenu-styles">
+      /* ========== DESKTOP DROPDOWN SUBMENU STYLES ========== */
+      /* Base styles for dropdown submenus - parent must be positioned */
+      .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { position: relative; }
+      /* Submenu base - hidden by default */
+      .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { display: block !important; position: absolute !important; top: 100%; left: 0; min-width: 220px; background: white; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000; list-style: none; pointer-events: none; }
+      /* CRITICAL: Desktop hover styles to show dropdown */
+      .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Submenu item styling */
+      .sub-menu li { list-style: none; margin: 0; padding: 0; }
+      .sub-menu a { display: block !important; padding: 10px 16px !important; color: var(--text-dark, #333) !important; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background-color 0.2s; }
+      .sub-menu .zappy-nav-child > a { padding-left: 28px !important; font-size: 0.9em !important; opacity: 0.85 !important; }
+      [dir="rtl"] .sub-menu .zappy-nav-child > a, html[lang="he"] .sub-menu .zappy-nav-child > a, html[lang="ar"] .sub-menu .zappy-nav-child > a { padding-left: 10px !important; padding-right: 28px !important; }
+      .sub-menu .zappy-nav-parent > a { font-weight: 600 !important; }
+      .sub-menu a:hover { background-color: #f5f5f5; }
+      /* RTL (Hebrew/Arabic) dropdown positioning */
+      [dir="rtl"] .nav-menu .sub-menu, [dir="rtl"] nav .sub-menu, [dir="rtl"] .navbar .sub-menu, html[lang="he"] .nav-menu .sub-menu, html[lang="he"] nav .sub-menu, html[lang="he"] .navbar .sub-menu, html[lang="ar"] .nav-menu .sub-menu, html[lang="ar"] nav .sub-menu, html[lang="ar"] .navbar .sub-menu { left: auto !important; right: 0 !important; }
+      /* Hide empty dropdown menus (exclude catalog sub-menus that use <a> children instead of <li>) */
+      .sub-menu:empty, .sub-menu:not(:has(li:not(.zappy-hidden-menu-item))):not(:has(> a)), .sub-menu:not(:has(li)):not(:has(> a)) { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+      /* Desktop: show submenu on Menu Group hover */
+      li:has(.menu-group-title):hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Menu Group title styling */
+      .nav-menu > li > .menu-group-title, #navMenu > li > .menu-group-title { display: inline-block; padding: 0.5rem 1rem; cursor: default; user-select: none; }
+      
+      /* ========== MOBILE SUBMENU STYLES ========== */
+      @media (max-width: 768px) {
+        .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { position: static !important; transform: none !important; box-shadow: none !important; background: transparent !important; max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; padding: 0 !important; border-radius: 0 !important; }
+        .navbar .sub-menu.mobile-expanded, .nav-menu .sub-menu.mobile-expanded, #navMenu .sub-menu.mobile-expanded { max-height: none !important; overflow-y: visible !important; opacity: 1 !important; visibility: visible !important; padding: 8px 0 8px 16px !important; }
+        [dir="rtl"] .sub-menu.mobile-expanded, html[lang="he"] .sub-menu.mobile-expanded { padding: 8px 16px 8px 0 !important; }
+        /* Disable hover behavior on mobile */
+        .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+        .nav-menu li > .sub-menu.mobile-expanded, nav li > .sub-menu.mobile-expanded, .navbar li > .sub-menu.mobile-expanded, #navMenu li > .sub-menu.mobile-expanded { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; }
+        .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; position: relative !important; min-height: 44px !important; }
+        .nav-menu li:has(.sub-menu) > a, nav li:has(.sub-menu) > a, .navbar li:has(.sub-menu) > a, #navMenu li:has(.sub-menu) > a { flex: 1 !important; min-width: 0 !important; }
+        .nav-menu li:has(.sub-menu) > .menu-group-title, nav li:has(.sub-menu) > .menu-group-title, .navbar li:has(.sub-menu) > .menu-group-title, #navMenu li:has(.sub-menu) > .menu-group-title { flex: 1 !important; min-width: 0 !important; padding: 0 !important; line-height: inherit !important; }
+        .nav-menu li:has(.sub-menu) > .sub-menu, nav li:has(.sub-menu) > .sub-menu, .navbar li:has(.sub-menu) > .sub-menu, #navMenu li:has(.sub-menu) > .sub-menu { flex-basis: 100% !important; width: 100% !important; }
+        .nav-menu li:has(.sub-menu) > a [class*="chevron"], .nav-menu li:has(.sub-menu) > a [class*="arrow"], .nav-menu li:has(.sub-menu) > a .fa-chevron-down, .nav-menu li:has(.sub-menu) > a .fa-angle-down, nav li:has(.sub-menu) > a [class*="chevron"], nav li:has(.sub-menu) > a [class*="arrow"], #navMenu li:has(.sub-menu) > a [class*="chevron"], #navMenu li:has(.sub-menu) > a [class*="arrow"] { display: none !important; visibility: hidden !important; }
+        .mobile-submenu-toggle { display: flex !important; align-items: center !important; justify-content: center !important; width: 44px !important; height: auto !important; background: transparent !important; border: none !important; cursor: pointer !important; color: var(--text-light) !important; position: static !important; flex-shrink: 0 !important; align-self: stretch !important; z-index: 2 !important; padding: 0 !important; margin: 0 !important; }
+        .mobile-submenu-toggle::after { content: '' !important; width: 0 !important; height: 0 !important; border-left: 6px solid transparent !important; border-right: 6px solid transparent !important; border-top: 7px solid currentColor !important; transition: transform 0.3s ease !important; }
+        .mobile-submenu-toggle.expanded::after { transform: rotate(180deg) !important; }
+        .sub-menu a { padding: 10px 0 !important; display: block !important; color: var(--text-light) !important; white-space: normal !important; }
+        .sub-menu .zappy-nav-child > a { padding-left: 28px !important; font-size: 0.9em !important; opacity: 0.85 !important; }
+        [dir="rtl"] .sub-menu .zappy-nav-child > a, html[lang="he"] .sub-menu .zappy-nav-child > a, html[lang="ar"] .sub-menu .zappy-nav-child > a { padding-left: 0 !important; padding-right: 28px !important; }
+        .sub-menu .zappy-nav-parent > a { font-weight: 600 !important; }
+        .nav-menu.active, #navMenu.active { max-width: 100vw !important; overflow-x: hidden !important; box-sizing: border-box !important; }
+        .navbar .sub-menu li a, nav.navbar .sub-menu li a, .zappy-products-dropdown .sub-menu a { color: var(--text-light) !important; }
+      }
+      @media (min-width: 769px) { .mobile-submenu-toggle { display: none !important; } }
+    </style>
+
+    <style id="zappy-widget-visibility">
+      html[dir="rtl"] .whatsapp-float { right: 20px !important; left: auto !important; }
+      html[dir="ltr"] .whatsapp-float, html:not([dir]) .whatsapp-float { left: 20px !important; right: auto !important; }
+      html[dir="rtl"] #mic-access-tool-general-button, html[dir="rtl"] .mic-access-tool-general-button,
+      html[dir="rtl"] #mic-init-access-tool .mic-access-tool-general-button,
+      html[dir="rtl"] #mic-init-access-tool #mic-access-tool-general-button,
+      html[dir="rtl"] ._access-icon { left: 20px !important; right: auto !important; }
+      html[dir="ltr"] #mic-access-tool-general-button, html[dir="ltr"] .mic-access-tool-general-button,
+      html[dir="ltr"] #mic-init-access-tool .mic-access-tool-general-button,
+      html[dir="ltr"] #mic-init-access-tool #mic-access-tool-general-button,
+      html[dir="ltr"] ._access-icon,
+      html:not([dir]) #mic-access-tool-general-button, html:not([dir]) .mic-access-tool-general-button,
+      html:not([dir]) #mic-init-access-tool .mic-access-tool-general-button,
+      html:not([dir]) #mic-init-access-tool #mic-access-tool-general-button,
+      html:not([dir]) ._access-icon { right: 20px !important; left: auto !important; }
+      @media (max-width: 768px) { .whatsapp-float { display: flex !important; } }
+      @media (min-width: 769px) { .whatsapp-float { display: flex !important; } }
+      @media (max-width: 768px) {
+        #mic-access-tool-general-button, .mic-access-tool-general-button,
+        #mic-init-access-tool .mic-access-tool-general-button, #mic-init-access-tool #mic-access-tool-general-button,
+        ._access-icon { display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; }
+        #mic-access-tool-box.opened-mic-access-tool, .mic-access-tool-box.opened-mic-access-tool,
+        #mic-init-access-tool #mic-access-tool-box.opened-mic-access-tool {
+          visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;
+        }
+      }
+      @media (min-width: 769px) {
+        #mic-access-tool-general-button, .mic-access-tool-general-button,
+        #mic-init-access-tool .mic-access-tool-general-button, #mic-init-access-tool #mic-access-tool-general-button,
+        ._access-icon { display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; }
+        #mic-access-tool-box.opened-mic-access-tool, .mic-access-tool-box.opened-mic-access-tool,
+        #mic-init-access-tool #mic-access-tool-box.opened-mic-access-tool {
+          visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;
+        }
+      }
+    </style>
+</head>
+<body>
+<a class="skip-link" href="#main">דלג לתוכן הראשי</a>
+  <nav class="navbar" dir="rtl">
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+  
+  <button class="phone-header-btn" data-phone="[business_phone]" aria-label="Call">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg>
+  </button>
+
+  <div class="nav-container">
+    <div class="nav-right-group"><div class="nav-brand">
+      <a href="/" class="logo-link"><img class="logo" src="/assets/site-----image-1.webp" alt="עטרה סבג אדריכלות ועיצוב פנים"></a>
+    </div><ul class="nav-menu" id="navMenu"><li><a href="#services">שירותים</a></li><li><a href="#benefits">יתרונות</a></li><li><a href="#process">Process</a></li><li><a href="#portfolio">תיק עבודות</a></li><li><a href="#testimonials">המלצות</a></li><li><a href="#stats">נתונים</a></li><li class="mobile-contact-link nav-cta-mobile-item"><a href="#cta" class="nav-cta-btn">צור קשר</a></li></ul></div>
+    
+    
+    
+    <div class="nav-cta-container">
+      <a href="#cta" class="nav-cta-btn">צור קשר</a>
+    </div>
+  </div>
+</nav>
+<script>
+
+// Navbar Mobile Menu Toggle and Contrast Fix
+(function() {
+  // Use 'load' event instead of 'DOMContentLoaded' to ensure we run AFTER all other scripts
+  window.addEventListener('load', function() {
+    
+    // FIX MOBILE BUTTON CONTRAST
+    // Detect navbar background color and apply contrasting color to mobile buttons
+    const navbar = document.querySelector('.navbar, nav, header');
+    if (!navbar) {
+      console.log('[Navbar] Navbar element not found');
+      return;
+    }
+    
+    // DECLARE VARIABLES EARLY to avoid Temporal Dead Zone errors
+    // These are used in multiple places below
+    let mobileToggle = document.getElementById('mobileToggle') ||
+                       document.querySelector('.mobile-toggle') ||
+                       document.querySelector('.hamburger') ||
+                       document.querySelector('.hamburger-menu') ||
+                       document.querySelector('.menu-toggle') ||
+                       document.querySelector('.burger-menu') ||
+                       document.querySelector('[aria-label="Menu"]') ||
+                       document.querySelector('[aria-label="תפריט"]');
+    
+    const phoneBtn = document.querySelector('.phone-header-btn');
+    
+    const computedStyle = window.getComputedStyle(navbar);
+    let bgColor = computedStyle.backgroundColor;
+    
+    console.log('[Navbar] Initial navbar background:', bgColor);
+    
+    // Check if background is transparent or rgba with 0 alpha
+    const isTransparent = bgColor === 'transparent' || 
+                         bgColor === 'rgba(0, 0, 0, 0)' ||
+                         (bgColor.startsWith('rgba') && bgColor.includes(', 0)'));
+    
+    if (isTransparent) {
+      // Check for background-image or gradient
+      const bgImage = computedStyle.backgroundImage;
+      if (bgImage && bgImage !== 'none') {
+        console.log('[Navbar] Navbar has background image/gradient, using dark text');
+        bgColor = 'rgb(240, 240, 240)'; // Assume light background
+      } else {
+        // Transparent navbar - check body background
+        const bodyBg = window.getComputedStyle(document.body).backgroundColor;
+        console.log('[Navbar] Navbar transparent, using body background:', bodyBg);
+        bgColor = bodyBg;
+      }
+    }
+    
+    // Calculate luminance to determine if background is light or dark
+    const rgb = bgColor.match(/\d+/g);
+    if (rgb && rgb.length >= 3) {
+      const r = parseInt(rgb[0]);
+      const g = parseInt(rgb[1]);
+      const b = parseInt(rgb[2]);
+      const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      
+      // Mobile button colors are set by Claude's AI-generated CSS (same as .nav-menu a)
+      // No dynamic color overrides needed - colors come from the generated navbar CSS
+      console.log('[Navbar] Mobile button colors preserved from Claude CSS (luminance:', luminance.toFixed(2) + ')');
+      
+      // FIX ICON SIZES - Ensure SVGs are properly sized and visible
+      // INJECT CRITICAL CSS TO OVERRIDE ANY CONFLICTING RULES
+      const criticalCSS = document.createElement('style');
+      criticalCSS.id = 'zappy-mobile-nav-fix';
+      const htmlLang = document.documentElement.lang || 'en';
+      const htmlDir = document.documentElement.dir || 'ltr';
+      // Check both dir attribute AND lang for RTL detection
+      // dir="rtl" is the most reliable indicator
+      const isRTL = htmlDir === 'rtl' || htmlLang === 'he' || htmlLang === 'ar';
+      
+      criticalCSS.textContent = `
+        /* Hide mobile buttons on desktop, show only on mobile */
+        @media (min-width: 769px) {
+          .mobile-toggle,
+          .phone-header-btn {
+            display: none !important;
+          }
+        }
+        
+        /* Show and position mobile buttons correctly on mobile */
+        @media (max-width: 768px) {
+          .navbar,
+          nav.navbar {
+            min-height: 70px !important;
+          }
+
+          .mobile-toggle,
+          .phone-header-btn {
+            position: absolute !important;
+            top: 0 !important;
+            bottom: 0 !important;
+            margin-top: auto !important;
+            margin-bottom: auto !important;
+            transform: none !important;
+            z-index: 1001 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 36px !important;
+            height: 36px !important;
+            border-radius: 50% !important;
+            border: none !important;
+            cursor: pointer !important;
+            padding: 6px !important;
+            background: none !important;
+            color: var(--nav-text, var(--text-light)) !important;
+            touch-action: manipulation !important;
+            -webkit-tap-highlight-color: transparent !important;
+          }
+
+          html[data-zappy-site-type="ecommerce"] .phone-header-btn,
+          body[data-zappy-site-type="ecommerce"] .phone-header-btn,
+          html[data-zappy-site-type="ecommerce"] header .phone-header-btn,
+          html[data-zappy-site-type="ecommerce"] nav .phone-header-btn {
+            display: none !important;
+            visibility: hidden !important;
+            width: 0 !important;
+            height: 0 !important;
+            min-width: 0 !important;
+            overflow: hidden !important;
+          }
+          
+          /* LTR positioning (default): hamburger LEFT, phone RIGHT */
+          html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle,
+          html[dir="ltr"] .mobile-toggle {
+            left: 12px !important;
+            right: auto !important;
+          }
+          html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn,
+          html[dir="ltr"] .phone-header-btn {
+            right: 12px !important;
+            left: auto !important;
+          }
+          
+          /* RTL positioning: hamburger RIGHT, phone LEFT */
+          html[dir="rtl"] .mobile-toggle,
+          html[lang="he"] .mobile-toggle,
+          html[lang="ar"] .mobile-toggle {
+            right: 12px !important;
+            left: auto !important;
+          }
+          html[dir="rtl"] .phone-header-btn,
+          html[lang="he"] .phone-header-btn,
+          html[lang="ar"] .phone-header-btn {
+            left: 12px !important;
+            right: auto !important;
+          }
+          
+          /* CRITICAL: Ensure nav-container has min-height on mobile */
+          /* All children are positioned absolutely/fixed on mobile, so height:auto collapses to 0 */
+          .nav-container {
+            min-height: 70px !important;
+            position: relative !important;
+          }
+          
+          /* Ensure SVG icons are properly sized and inherit color */
+          .mobile-toggle svg,
+          .phone-header-btn svg {
+            width: 24px !important;
+            height: 24px !important;
+            /* Don't force display - let JavaScript control hamburger/close toggle */
+          }
+          
+          /* Reset nav-cta-container on mobile - remove desktop box-shadow/padding */
+          /* that creates a visible ghost box when CTA button is hidden */
+          .nav-cta-container {
+            box-shadow: none !important;
+            padding: 0 !important;
+          }
+          
+          /* Hide nav-cta-container entirely on mobile when there's no lang-switcher */
+          /* (only the CTA button is inside, and it's hidden on mobile) */
+          .nav-cta-container:not(:has(.lang-switcher)) {
+            display: none !important;
+          }
+          
+          /* CRITICAL: Prevent hero image fade gradient from bleeding over headline text */
+          /* The .image-fade-gradient has bottom: -30px (extends below parent) */
+          /* On mobile stacked layout, this overlaps the h1 text below the image */
+          .hero-image-column {
+            overflow: hidden !important;
+          }
+          .image-fade-gradient {
+            bottom: 0 !important;
+          }
+          
+          /* Hide desktop language switcher on mobile - hamburger menu handles it */
+          /* High specificity to override stored CSS */
+          .lang-switcher,
+          .nav-cta-container .lang-switcher,
+          .nav-container .lang-switcher,
+          .navbar .lang-switcher,
+          .navbar .nav-cta-container .lang-switcher {
+            display: none !important;
+          }
+        }
+      `;
+      
+      // Remove existing fix if present and inject new one
+      const existing = document.getElementById('zappy-mobile-nav-fix');
+      if (existing) existing.remove();
+      document.head.appendChild(criticalCSS);
+      
+      console.log('[Navbar] Critical CSS injected for mobile nav positioning');
+      
+      // ONLY apply inline positioning styles on mobile viewport
+      // On desktop, the CSS handles hiding these buttons with display: none
+      // Inline styles were breaking desktop layout by overriding CSS
+      const isMobileViewport = window.innerWidth <= 768;
+      
+      if (mobileToggle) {
+        // Icon sizing applies to all viewports for consistency
+        const hamburgerIcon = mobileToggle.querySelector('.hamburger-icon');
+        const closeIcon = mobileToggle.querySelector('.close-icon');
+        
+        if (hamburgerIcon) {
+          hamburgerIcon.style.setProperty('width', '24px', 'important');
+          hamburgerIcon.style.setProperty('height', '24px', 'important');
+          hamburgerIcon.style.setProperty('display', 'block', 'important'); // Show hamburger by default
+        }
+        if (closeIcon) {
+          closeIcon.style.setProperty('width', '24px', 'important');
+          closeIcon.style.setProperty('height', '24px', 'important');
+          closeIcon.style.setProperty('display', 'none', 'important'); // Hide close icon by default
+        }
+        
+        // ONLY set positioning inline styles on mobile
+        if (isMobileViewport) {
+          mobileToggle.style.setProperty('position', 'absolute', 'important');
+          mobileToggle.style.setProperty('top', '0', 'important');
+          mobileToggle.style.setProperty('bottom', '0', 'important');
+          mobileToggle.style.setProperty('margin-top', 'auto', 'important');
+          mobileToggle.style.setProperty('margin-bottom', 'auto', 'important');
+          mobileToggle.style.setProperty('transform', 'none', 'important');
+          mobileToggle.style.setProperty('z-index', '1001', 'important');
+          
+          // Clear any inline left/right so CSS can take over based on html[dir]
+          mobileToggle.style.removeProperty('left');
+          mobileToggle.style.removeProperty('right');
+          
+          console.log('[Navbar] Mobile toggle positioning applied (mobile viewport)');
+        } else {
+          // On desktop, clear any positioning styles to let CSS handle it
+          mobileToggle.style.removeProperty('position');
+          mobileToggle.style.removeProperty('top');
+          mobileToggle.style.removeProperty('transform');
+          mobileToggle.style.removeProperty('z-index');
+          mobileToggle.style.removeProperty('left');
+          mobileToggle.style.removeProperty('right');
+          console.log('[Navbar] Desktop viewport - cleared mobile toggle inline positioning');
+        }
+      }
+      
+      if (phoneBtn) {
+        // Icon sizing applies to all viewports
+        const phoneIcon = phoneBtn.querySelector('svg');
+        if (phoneIcon) {
+          phoneIcon.style.width = '24px';
+          phoneIcon.style.height = '24px';
+          phoneIcon.setAttribute('width', '24');
+          phoneIcon.setAttribute('height', '24');
+        }
+        
+        // ONLY set positioning inline styles on mobile
+        if (isMobileViewport) {
+          phoneBtn.style.setProperty('position', 'absolute', 'important');
+          phoneBtn.style.setProperty('top', '0', 'important');
+          phoneBtn.style.setProperty('bottom', '0', 'important');
+          phoneBtn.style.setProperty('margin-top', 'auto', 'important');
+          phoneBtn.style.setProperty('margin-bottom', 'auto', 'important');
+          phoneBtn.style.setProperty('transform', 'none', 'important');
+          phoneBtn.style.setProperty('z-index', '1001', 'important');
+          
+          // Clear any inline left/right so CSS can take over based on html[dir]
+          phoneBtn.style.removeProperty('left');
+          phoneBtn.style.removeProperty('right');
+          
+          console.log('[Navbar] Phone button positioning applied (mobile viewport)');
+        } else {
+          // On desktop, clear any positioning styles to let CSS handle it
+          phoneBtn.style.removeProperty('position');
+          phoneBtn.style.removeProperty('top');
+          phoneBtn.style.removeProperty('transform');
+          phoneBtn.style.removeProperty('z-index');
+          phoneBtn.style.removeProperty('left');
+          phoneBtn.style.removeProperty('right');
+          console.log('[Navbar] Desktop viewport - cleared phone button inline positioning');
+        }
+      }
+    } else {
+      console.log('[Navbar] Could not parse background color:', bgColor);
+    }
+    
+    // MOBILE MENU TOGGLE
+    // Re-query in case DOM changed (mobileToggle already declared at top of function)
+    mobileToggle = document.getElementById('mobileToggle') ||
+                   document.querySelector('.mobile-toggle') ||
+                   document.querySelector('.hamburger') ||
+                   document.querySelector('.hamburger-menu') ||
+                   document.querySelector('.menu-toggle') ||
+                   document.querySelector('.burger-menu') ||
+                   document.querySelector('[aria-label="Menu"]') ||
+                   document.querySelector('[aria-label="תפריט"]');
+    
+    // EXPANDED SEARCH: Find nav menu by ID or class
+    const navMenu = document.getElementById('navMenu') ||
+                  document.querySelector('.nav-menu') ||
+                  document.querySelector('.nav-links') ||
+                  document.querySelector('nav ul:not(.submenu)');
+    
+    if (!mobileToggle || !navMenu) {
+      console.log('[Navbar] Mobile toggle or menu not found:', { toggle: !!mobileToggle, menu: !!navMenu });
+      return;
+    }
+    
+    // Ensure navMenu has ID for CSS targeting
+    if (!navMenu.id) {
+      navMenu.id = 'navMenu';
+    }
+    
+    console.log('[Navbar] Initializing mobile menu...');
+    
+    // Remove any existing event listeners by cloning the button
+    const newToggle = mobileToggle.cloneNode(true);
+    mobileToggle.parentNode.replaceChild(newToggle, mobileToggle);
+    
+    // Toggle menu handler (shared by click and touchend)
+    function handleToggle(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const hamburgerIcon = newToggle.querySelector('.hamburger-icon');
+      const closeIcon = newToggle.querySelector('.close-icon');
+      const isActive = navMenu.classList.contains('active');
+      
+      if (isActive) {
+        // Close menu
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
+        console.log('[Navbar] Menu closed');
+      } else {
+        // Open menu
+        navMenu.classList.add('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'none', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'block', 'important');
+        document.body.style.overflow = 'hidden';
+        document.body.classList.add('menu-open');
+        console.log('[Navbar] Menu opened');
+      }
+    }
+    
+    // Use click for desktop/emulation and touchend as iOS Safari fallback.
+    // Prevent double-fire with a timestamp guard.
+    var lastToggleTime = 0;
+    function guardedToggle(e) {
+      var now = Date.now();
+      if (now - lastToggleTime < 300) return;
+      lastToggleTime = now;
+      handleToggle(e);
+    }
+    
+    newToggle.addEventListener('click', guardedToggle);
+    newToggle.addEventListener('touchend', guardedToggle);
+
+    // Close the full-screen overlay menu on Escape
+    document.addEventListener('keydown', function(e) {
+      if ((e.key === 'Escape' || e.key === 'Esc') && navMenu.classList.contains('active')) {
+        const hamburgerIcon = newToggle.querySelector('.hamburger-icon');
+        const closeIcon = newToggle.querySelector('.close-icon');
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
+        console.log('[Navbar] Menu closed (Escape)');
+      }
+    });
+    
+    // Close menu when clicking nav links (but NOT dropdown toggles)
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        // Don't close if it's a dropdown child (unless it's a real navigation link)
+        if (this.getAttribute('href') === '#') return;
+        
+        const hamburgerIcon = newToggle.querySelector('.hamburger-icon');
+        const closeIcon = newToggle.querySelector('.close-icon');
+        
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
+        console.log('[Navbar] Menu closed (link clicked)');
+      });
+    });
+    
+    // DROPDOWN MENU TOGGLE (for mobile and touch devices)
+    var dropdownToggles = navMenu.querySelectorAll('.dropdown-toggle');
+    dropdownToggles.forEach(function(toggle) {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var parent = this.closest('.nav-dropdown');
+        if (!parent) return;
+        
+        // Close other open dropdowns at the same level
+        var siblings = parent.parentNode.querySelectorAll('.nav-dropdown.open');
+        siblings.forEach(function(sib) {
+          if (sib !== parent) sib.classList.remove('open');
+        });
+        
+        parent.classList.toggle('open');
+        console.log('[Navbar] Dropdown toggled:', parent.classList.contains('open') ? 'open' : 'closed');
+      });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-dropdown')) {
+        var openDropdowns = document.querySelectorAll('.nav-dropdown.open');
+        openDropdowns.forEach(function(dd) { dd.classList.remove('open'); });
+      }
+    });
+    
+    console.log('[Navbar] Dropdown handlers initialized for ' + dropdownToggles.length + ' dropdowns');
+    
+    // Phone button functionality (phoneBtn already declared at top of function)
+    if (phoneBtn) {
+      phoneBtn.addEventListener('click', function() {
+        // Get phone number from placeholder in page or use default
+        const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+        const phoneNumber = phoneLinks.length > 0 
+          ? phoneLinks[0].getAttribute('href').replace('tel:', '')
+          : '[business_phone]';
+        
+        window.location.href = 'tel:' + phoneNumber;
+        console.log('[Navbar] Phone button clicked');
+      });
+    }
+    
+    console.log('[Navbar] Mobile menu initialized successfully');
+    
+    // WhatsApp button visibility is now controlled via CSS (siteSettings).
+    // No JS-based desktop hiding — the button is visible on both mobile and desktop by default.
+  });
+})();
+
+</script>
+  
+  <main id="main">
+    <section data-band-index="0" id="hero" class="index-hero-section" data-layout-spec="בית-hero" data-hero-treatment="fade-bleed" style="--hero-fade-color: var(--bg-light);" data-hero-type="fullscreen-scrim">
+  <img loading="eager" fetchpriority="high" decoding="async" class="hero-fade-img" data-hero-bg="true" data-placeholder="index-hero-image-1" data-context="A sunlit luxury living space with natural stone, linen seating, warm wood, ceramics, and the main visual subject placed on the END side of the frame. The image should be a complete edge-to-edge photo with no blank space, text-safe area, or gradient fade." width="1440" height="900" src="/assets/site-index-hero-image-1.webp" alt="סלון יוקרתי עם תאורה טבעית">
+  <div class="hero-fade-content">
+    <h1 class="display-xl">אדריכלות ועיצוב פנים שהופכים בית לחוויה של יופי ודיוק</h1>
+    <h3 class="hero-supporting">תכנון אדריכלי, עיצוב פנים, בחירת חומרים וליווי אישי מהקונספט ועד להשלמה – אנחנו כאן כדי ליצור עבורכם את החלל המושלם.</h3>
+    <div class="hero-cta-row">
+      <a href="#contact" class="btn-primary">לתיאום פגישת ייעוץ</a>
+      <a href="#about" class="btn-secondary">גישת העיצוב שלנו</a>
+    </div>
+  </div>
+  <div class="index-hero-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 L0,40 Q50,35 100,42 T200,38 Q250,42 300,35 T400,40 Q450,38 500,42 T600,35 Q650,40 700,38 T800,42 Q850,35 900,40 T1000,38 Q1050,42 1100,35 T1200,40 L1200,80 Z" fill="#F5F0EA"/>
+    </svg>
+  </div>
+</section>
+
+<section data-band-index="1" id="services" class="index-services-section" data-layout-spec="בית-services">
+  <div class="index-services-container">
+    <!-- Intro Block -->
+    <div class="index-services-intro">
+      <span class="index-services-label">התהליך שלנו</span>
+      <h2 class="index-services-heading">כל פרויקט מתחיל בהקשבה</h2>
+      <p class="index-services-subtitle">אנו מאמינים שעיצוב טוב נולד מהבנה עמוקה של הצרכים, אורח החיים והחלומות שלכם. התהליך שלנו בהיר, קשוב ומותאם אישית – מהקו הראשון ועד לנגיעה האחרונה.</p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="index-services-grid">
+      
+      <!-- Card 1: Architectural Planning -->
+      <article class="index-services-card">
+        <div class="index-services-card-img-wrap">
+          <img loading="lazy" decoding="async" data-placeholder="index-services-image-1" data-context="Architectural blueprint sketches, floor plans, and a scale model of a modern private home renovation with natural light pouring in through large windows, warm wooden tones, and clean lines. Architecture &amp; Interior Design studio aesthetic." width="600" height="400" src="/assets/site-index-services-image-1.webp" alt="תכנון אדריכלי לבית פרטי">
+        </div>
+        <div class="index-services-card-content">
+          <h3 class="index-services-card-title">תכנון אדריכלי</h3>
+          <p class="index-services-card-text">בתים פרטיים, דירות, הרחבות ושיפוצים – אנו מתכננים מרחבים שמנצלים כל מטר בצורה חכמה, תוך שמירה על זרימה טבעית, אור ואופי ייחודי.</p>
+          <span class="index-services-card-cue">תכנון מותאם אישית</span>
+        </div>
+      </article>
+
+      <!-- Card 2: Interior Design -->
+      <article class="index-services-card">
+        <div class="index-services-card-img-wrap">
+          <img loading="lazy" decoding="async" data-placeholder="index-services-image-2" data-context="A warm, sunlit living room interior design with layered textiles, soft neutral color palette, custom wooden furniture, and curated decorative objects. Architecture &amp; Interior Design studio aesthetic, tactile materials, calm elegance." width="600" height="400" src="/assets/site-index-services-image-2.webp" alt="עיצוב פנים לסלון מגורים">
+        </div>
+        <div class="index-services-card-content">
+          <h3 class="index-services-card-title">עיצוב פנים</h3>
+          <p class="index-services-card-text">תכנון חלל, בחירת חומרים, תאורה, פלטת צבעים והכוונה לריהוט מותאם – אנו יוצרים פנים הרמוניים שמספרים את הסיפור שלכם.</p>
+          <span class="index-services-card-cue">חללים בהרמוניה מושלמת</span>
+        </div>
+      </article>
+
+      <!-- Card 3: Styling & Finishing -->
+      <article class="index-services-card">
+        <div class="index-services-card-img-wrap">
+          <img loading="lazy" decoding="async" data-placeholder="index-services-image-3" data-context="Close-up of interior styling details: soft linen cushions, ceramic vases, art books on a coffee table, dried flowers, warm ambient lighting. Architecture &amp; Interior Design studio aesthetic, refined textures, atmosphere creation." width="600" height="400" src="/assets/site-index-services-image-3.webp" alt="סטיילינג והלבשת הבית">
+        </div>
+        <div class="index-services-card-content">
+          <h3 class="index-services-card-title">סטיילינג והלבשה</h3>
+          <p class="index-services-card-text">טקסטיל, חפצי אמנות, אביזרים וצמחייה – הנגיעות האחרונות שהופכות חלל מעוצב לבית חם, אישי ומלא אווירה.</p>
+          <span class="index-services-card-cue">האווירה שלכם, בדיוק</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- Bottom Divider: Rounded-Arch SVG -->
+  <div class="index-services-divider-wrapper" aria-hidden="true">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 L0,30 Q150,0 300,25 Q450,50 600,20 Q750,-10 900,25 Q1050,60 1200,30 L1200,80 Z" fill="#F5F0EA"/>
+    </svg>
+  </div>
+</section>
+
+<section data-band-index="2" id="benefits" class="index-benefits-section" data-layout-spec="בית-benefits">
+  <div class="index-benefits-container">
+    <div class="index-benefits-content">
+      <h2 class="index-benefits-heading">תהליך עיצוב שמרגיש כמו בית</h2>
+      <p class="index-benefits-subtitle">אנחנו מאמינים שעיצוב טוב מתחיל בהקשבה. כל פרויקט מתחיל בשיחה עמוקה על החלומות שלכם, הצרכים האמיתיים של המשפחה, והקצב הנכון לכם. התוצאה היא חלל שמספר את הסיפור שלכם.</p>
+      <p class="index-benefits-description">הגישה שלנו משלבת תכנון אדריכלי מדויק עם עין עיצובית רגישה לפרטים הקטנים. משלב הסקיצה הראשונית ועד לבחירת החומרים הסופית, אנחנו מלווים אתכם יד ביד, מוודאים שכל החלטה משרתת גם את היופי וגם את הפונקציה.</p>
+      <ul class="index-benefits-list">
+        <li class="index-benefits-item">
+          <div class="index-benefits-icon-wrapper">
+            <svg class="index-benefits-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-icon-type="svg">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <div class="index-benefits-text">
+            <h3 class="index-benefits-item-title">בהירות מהסקיצה הראשונה</h3>
+            <p class="index-benefits-item-desc">אנחנו מתרגמים את הרעיונות שלכם לתוכניות ברורות ומפורטות, כך שתמיד תדעו בדיוק לאן אנחנו הולכים.</p>
+          </div>
+        </li>
+        <li class="index-benefits-item">
+          <div class="index-benefits-icon-wrapper">
+            <svg class="index-benefits-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-icon-type="svg">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="index-benefits-text">
+            <h3 class="index-benefits-item-title">חומרים שמתיישנים ביופי</h3>
+            <p class="index-benefits-item-desc">אנחנו בוחרים עץ, אבן, פשתן וקרמיקה שלא רק נראים טוב היום, אלא משתבחים עם השנים והופכים לחלק מהסיפור המשפחתי.</p>
+          </div>
+        </li>
+        <li class="index-benefits-item">
+          <div class="index-benefits-icon-wrapper">
+            <svg class="index-benefits-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-icon-type="svg">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <div class="index-benefits-text">
+            <h3 class="index-benefits-item-title">תכנון שמכבד תקציב ולייף סטייל</h3>
+            <p class="index-benefits-item-desc">עיצוב חכם לא חייב להיות יקר. אנחנו מתאימים את התכנון לאורח החיים ולתקציב שלכם, בלי להתפשר על איכות.</p>
+          </div>
+        </li>
+        <li class="index-benefits-item">
+          <div class="index-benefits-icon-wrapper">
+            <svg class="index-benefits-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-icon-type="svg">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <div class="index-benefits-text">
+            <h3 class="index-benefits-item-title">בית שמרגיש אישי, לא מועתק</h3>
+            <p class="index-benefits-item-desc">אנחנו לא משכפלים קטלוגים. כל פרויקט מקבל זהות ייחודית שמשקפת את הטעם, הזכרונות והשאיפות של האנשים שגרים בו.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="index-benefits-media">
+      <div class="index-benefits-image-composition">
+        <img loading="lazy" decoding="async" class="index-benefits-main-img" data-placeholder="index-benefits-image-1" data-context="A warm, sunlit worktable in an architecture studio featuring linen fabric swatches, hand-drawn furniture placement notes on tracing paper, natural stone samples, wood chips, and ceramic pieces arranged beautifully. Soft natural light from a window, warm beige and terracotta tones, shallow depth of field, editorial photography style." width="600" height="400" src="/assets/site-index-benefits-image-1.webp" alt="שולחן עבודה בסטודיו עם דוגמיות חומרים וסקיצות">
+        <img loading="lazy" decoding="async" class="index-benefits-secondary-img" data-placeholder="index-benefits-image-2" data-context="A close-up moodboard tile showing layered textures: raw linen, brushed oak wood, matte ceramic vase, and a terracotta color swatch. Warm earthy palette, soft shadows, tactile rich surface, editorial interior design photography." width="300" height="200" src="/assets/site-index-benefits-image-2.webp" alt="לוח השראה עם טקסטורות חמות וחומרים טבעיים">
+      </div>
+    </div>
+  </div>
+  <div class="index-benefits-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="index-benefits-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#F3EBDD"/>
+          <stop offset="70%" stop-color="#DCCBB6"/>
+          <stop offset="100%" stop-color="#2E2923"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="1200" height="80" fill="url(#index-benefits-grad)"/>
+      <line x1="0" y1="40" x2="1200" y2="40" stroke="#B46A4C" stroke-width="2" opacity="0.6"/>
+    </svg>
+  </div>
+</section>
+
+<section data-band-index="3" id="process" class="index-process-section" data-layout-spec="בית-process" dir="rtl">
+  <div class="process-container">
+    <div class="process-header">
+      <h2 class="process-title">המסע שלכם אל הבית המושלם</h2>
+      <p class="process-subtitle">תהליך עבודה מובנה, שקוף ואישי – מליווי צמוד לאורך כל הדרך, מהרעיון הראשוני ועד לפרטים האחרונים</p>
+    </div>
+    
+    <div class="process-steps">
+      <div class="process-line"></div>
+      
+      <div class="process-step">
+        <div class="step-marker">
+          <span class="step-number">01</span>
+        </div>
+        <div class="step-content">
+          <h3 class="step-title">שיחת היכרות ומיפוי צרכים</h3>
+          <p class="step-description">נפגשים לשיחה פתוחה ומעמיקה כדי להבין את אורח החיים, החלומות והצרכים שלכם. ממפים יחד את ההעדפות העיצוביות, התקציב ולוחות הזמנים, ומגבשים את הכיוון הראשוני לפרויקט.</p>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-marker">
+          <span class="step-number">02</span>
+        </div>
+        <div class="step-content">
+          <h3 class="step-title">תכנון מרחבי וקונספט עיצובי</h3>
+          <p class="step-description">מפתחים תכנית אדריכלית מפורטת וקונספט עיצובי ייחודי שמשקף את האישיות שלכם. יוצרים לוחות השראה, סקיצות ותוכניות עבודה שממחישות את הפוטנציאל הגלום בחלל.</p>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-marker">
+          <span class="step-number">03</span>
+        </div>
+        <div class="step-content">
+          <h3 class="step-title">בחירת חומרים, תאורה ונגרות</h3>
+          <p class="step-description">צוללים לעולם החומרים והטקסטורות – בוחרים יחד ריצוף, חיפויים, גופי תאורה, סניטריה ונגרות בהתאמה אישית. כל פרט נבחר בקפידה כדי ליצור הרמוניה מושלמת בין יופי לפונקציונליות.</p>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-marker">
+          <span class="step-number">04</span>
+        </div>
+        <div class="step-content">
+          <h3 class="step-title">סטיילינג סופי ואווירת פנים מלאה</h3>
+          <p class="step-description">מלווים אתכם עד לרגע ההשלמה – תיאום מול ספקים, פיקוח על הביצוע, סטיילינג אחרון של טקסטיל, אמנות ואקססוריז. התוצאה: בית חם, אישי ומעוצב שאתם גאים לחיות בו.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="process-bg-shape" aria-hidden="true"></div>
+
+  <div class="process-divider-wrapper" aria-hidden="true">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="wave-shadow" x="-5%" y="-20%" width="110%" height="140%">
+          <feDropShadow dx="0" dy="-4" stdDeviation="6" flood-color="#2E2923" flood-opacity="0.15"/>
+        </filter>
+      </defs>
+      <path d="M0,80 L0,25 Q75,55 150,28 T300,22 Q375,50 450,25 T600,20 Q675,48 750,24 T900,22 Q975,52 1050,25 T1200,28 L1200,80 Z" fill="var(--bg-light)" filter="url(#wave-shadow)"/>
+    </svg>
+  </div>
+</section>
+
+<section data-band-index="4" id="portfolio" class="index-portfolio-section" data-layout-spec="בית-portfolio">
+    <div class="portfolio-container">
+        <!-- Intro Block -->
+        <div class="portfolio-intro">
+            <h2 class="portfolio-heading">הפרויקטים שמספרים את הסיפור</h2>
+            <p class="portfolio-description">
+                כל חלל שאנחנו יוצרים הוא סיפור של איזון, אור וחומר. מהתכנון האדריכלי הראשוני ועד לפרט הנגרות האחרון, 
+                אנחנו מלווים את הפרויקט בתשומת לב לכל פרט – כדי ליצור בתים שמרגישים מדויקים, חמימים ומלאי השראה.
+            </p>
+        </div>
+
+        <!-- Asymmetrical Grid -->
+        <div class="portfolio-grid">
+            <!-- Feature Image (Large, spans 2 rows) -->
+            <figure class="portfolio-item portfolio-item--feature">
+                <img loading="lazy" decoding="async" data-placeholder="index-portfolio-image-1" data-context="A stunning luxury apartment living room in a warm neutral palette, featuring a bespoke curved sofa, natural oak flooring, floor-to-ceiling linen curtains diffusing soft sunlight, and a sculptural coffee table. The space feels airy and refined with architectural lighting highlighting textured plaster walls." width="800" height="1000" src="/assets/site-index-portfolio-image-1.webp" alt="סלון יוקרתי עם תאורה טבעית רכה ונגרות בהתאמה אישית" class="portfolio-image">
+                <figcaption class="portfolio-caption">איזון מושלם בין אור טבעי לזרימה פונקציונלית – וילה פרטית בהרצליה</figcaption>
+            </figure>
+
+            <!-- Medium Image Top (End side) -->
+            <figure class="portfolio-item portfolio-item--medium-top">
+                <img loading="lazy" decoding="async" data-placeholder="index-portfolio-image-2" data-context="A warm, minimalist kitchen with handleless oak cabinetry, a matte marble island, and brass pendant lights. Natural morning light streams through a large window, highlighting the tactile material palette and serene atmosphere." width="600" height="400" src="/assets/site-index-portfolio-image-2.webp" alt="מטבח מינימליסטי חמים עם אי שיש מוברש" class="portfolio-image">
+                <figcaption class="portfolio-caption">מטבח בהשראת הרמוניה חומרית – שיש, עץ ופליז</figcaption>
+            </figure>
+
+            <!-- Medium Image Bottom (End side) -->
+            <figure class="portfolio-item portfolio-item--medium-bottom">
+                <img loading="lazy" decoding="async" data-placeholder="index-portfolio-image-3" data-context="A serene master bedroom with a low-profile upholstered bed, textured linen bedding, a soft wool rug, and bespoke walnut nightstands. The lighting is indirect and calming, with a view to a private terrace garden." width="600" height="400" src="/assets/site-index-portfolio-image-3.webp" alt="חדר שינה רגוע עם מיטת ריפוד נמוכה וטקסטיל פשתן" class="portfolio-image">
+                <figcaption class="portfolio-caption">רוגע יוקרתי – חדר שינה עם גישה למרפסת גינה</figcaption>
+            </figure>
+
+            <!-- Small Detail Image 1 (Bottom row, left side) -->
+            <figure class="portfolio-item portfolio-item--detail-1">
+                <img loading="lazy" decoding="async" data-placeholder="index-portfolio-image-4" data-context="A close-up detail shot of custom joinery in a walk-in closet, showing the precise grain of natural oak veneer, integrated LED lighting strips, and a soft leather drawer pull. The focus is on tactile luxury and craftsmanship." width="400" height="300" src="/assets/site-index-portfolio-image-4.webp" alt="תקריב נגרות בהתאמה אישית עם תאורה נסתרת" class="portfolio-image">
+                <figcaption class="portfolio-caption">פרט נגרות מדויק – ארונות קיר עם תאורה נסתרת</figcaption>
+            </figure>
+
+            <!-- Small Detail Image 2 (Bottom row, middle) -->
+            <figure class="portfolio-item portfolio-item--detail-2">
+                <img loading="lazy" decoding="async" data-placeholder="index-portfolio-image-5" data-context="A beautifully styled bathroom vanity corner featuring a fluted travertine basin, a matte black wall-mounted faucet, and a hand-thrown ceramic vessel. Soft ambient light creates depth and spa-like tranquility." width="400" height="300" src="/assets/site-index-portfolio-image-5.webp" alt="פינת רחצה מעוצבת עם אבן טרוורטין מחורצת" class="portfolio-image">
+                <figcaption class="portfolio-caption">ספא פרטי – שילוב טרוורטין, קרמיקה ופליז מוברש</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <!-- Bottom Divider: Torn Linen-Edge SVG -->
+    <div class="portfolio-divider-wrapper">
+        <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,80 L0,55 Q40,48 80,52 T160,45 Q200,50 240,42 T320,48 Q360,40 400,45 T480,38 Q520,45 560,40 T640,48 Q680,42 720,45 T800,38 Q840,46 880,40 T960,48 Q1000,42 1040,45 T1120,38 Q1160,44 1200,40 L1200,80 Z" fill="#F5F0EA"/>
+        </svg>
+    </div>
+</section>
+
+<section data-band-index="5" id="testimonials" class="index-testimonials-section" data-layout-spec="בית-testimonials">
+  <div class="index-testimonials-section__bg-decor" aria-hidden="true"></div>
+  
+  <div class="index-testimonials-section__container">
+    
+    <header class="index-testimonials-section__header">
+      <h2 class="index-testimonials-section__title">לקוחות מספרים על החוויה</h2>
+      <p class="index-testimonials-section__subtitle">
+        כל פרויקט הוא עולם ומלואו. אנו מלווים את לקוחותינו לאורך כל הדרך – מתכנון מדויק ועד לתוצאה שמרגשת בכל פעם מחדש.
+      </p>
+    </header>
+
+    <div class="index-testimonials-section__grid">
+      
+      <!-- Card 1 -->
+      <article class="index-testimonials-section__card">
+        <div class="index-testimonials-section__card-quote-icon" aria-hidden="true">
+          <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 11H6.5C5.67 11 5 10.33 5 9.5V6.5C5 5.67 5.67 5 6.5 5H9C9.55 5 10 5.45 10 6V11ZM19 11H15.5C14.67 11 14 10.33 14 9.5V6.5C14 5.67 14.67 5 15.5 5H18C18.55 5 19 5.45 19 6V11Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 11C10 14.5 8.5 17 5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M19 11C19 14.5 17.5 17 14 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <blockquote class="index-testimonials-section__card-text">
+          <p>"הגענו לעטרה עם המון רעיונות אבל בלי לדעת איך לחבר אותם. היא לקחה אותנו יד ביד, תכננה לנו בית שהוא גם פרקטי וגם מלא בסטייל. כל ביקור באתר הפך לחוויה מרגשת."</p>
+        </blockquote>
+        <footer class="index-testimonials-section__card-author">
+          <span class="index-testimonials-section__card-name">מיכל ויואב כהן</span>
+          <span class="index-testimonials-section__card-role">זוג צעיר, תכנון בית פרטי במושב</span>
+        </footer>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="index-testimonials-section__card">
+        <div class="index-testimonials-section__card-quote-icon" aria-hidden="true">
+          <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 11H6.5C5.67 11 5 10.33 5 9.5V6.5C5 5.67 5.67 5 6.5 5H9C9.55 5 10 5.45 10 6V11ZM19 11H15.5C14.67 11 14 10.33 14 9.5V6.5C14 5.67 14.67 5 15.5 5H18C18.55 5 19 5.45 19 6V11Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 11C10 14.5 8.5 17 5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M19 11C19 14.5 17.5 17 14 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <blockquote class="index-testimonials-section__card-text">
+          <p>"שדרגנו את דירת הפנטהאוז עם עטרה והתוצאה עלתה על כל מה שדמיינו. היא הבינה בדיוק איך לנצל את החלל, לבחור חומרים יוקרתיים ולהפוך כל פינה להצהרה עיצובית."</p>
+        </blockquote>
+        <footer class="index-testimonials-section__card-author">
+          <span class="index-testimonials-section__card-name">משפחת לוי</span>
+          <span class="index-testimonials-section__card-role">בעלי נכס יוקרה, שיפוץ פנטהאוז בתל אביב</span>
+        </footer>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="index-testimonials-section__card">
+        <div class="index-testimonials-section__card-quote-icon" aria-hidden="true">
+          <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 11H6.5C5.67 11 5 10.33 5 9.5V6.5C5 5.67 5.67 5 6.5 5H9C9.55 5 10 5.45 10 6V11ZM19 11H15.5C14.67 11 14 10.33 14 9.5V6.5C14 5.67 14.67 5 15.5 5H18C18.55 5 19 5.45 19 6V11Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 11C10 14.5 8.5 17 5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M19 11C19 14.5 17.5 17 14 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <blockquote class="index-testimonials-section__card-text">
+          <p>"כמשקיעים, התכנון המדויק והפרזנטציה המקצועית שעטרה סיפקה היו קריטיים עבורנו. היא ידעה לתרגם את החזון העסקי לחללים שעובדים – ומוכרים. ממליץ בחום."</p>
+        </blockquote>
+        <footer class="index-testimonials-section__card-author">
+          <span class="index-testimonials-section__card-name">אורי שמעוני</span>
+          <span class="index-testimonials-section__card-role">יזם נדל"ן, תכנון פרויקט מגורים בבאר שבע</span>
+        </footer>
+      </article>
+
+    </div>
+
+  </div>
+
+  <!-- Bottom Divider: Overlapping cream semicircles -->
+  <div class="index-testimonials-section__divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 L0,45 
+               Q50,15 100,45 T200,45 
+               Q250,15 300,45 T400,45 
+               Q450,15 500,45 T600,45 
+               Q650,15 700,45 T800,45 
+               Q850,15 900,45 T1000,45 
+               Q1050,15 1100,45 T1200,45 
+               L1200,80 Z" fill="#F5F0EA"/>
+    </svg>
+  </div>
+
+</section>
+
+<section data-band-index="6" id="stats" class="index-stats-section" data-layout-spec="בית-stats">
+    <div class="index-stats-section__container">
+        <!-- Intro Column (START/Right in RTL) -->
+        <div class="index-stats-section__intro">
+            <span class="index-stats-section__overline">המספרים מדברים</span>
+            <h2 class="index-stats-section__title">מחויבות לאיכות<br>ויופי בכל פרט</h2>
+            <p class="index-stats-section__description" style="color: #1A1A1A !important">עטרה סבג אדריכלות ועיצוב פנים מביאה איתה ניסיון עשיר, רשת ענפה של ספקים מובילים, ותהליך עבודה מוקפד ששם את החלום שלכם במרכז.</p>
+        </div>
+
+        <!-- Stats Grid (END/Left in RTL) -->
+        <div class="index-stats-section__grid">
+            <!-- Stat 1 -->
+            <div class="index-stats-section__stat-card">
+                <div class="index-stats-section__stat-number">12+</div>
+                <h3 class="index-stats-section__stat-title">שנות ניסיון</h3>
+                <p class="index-stats-section__stat-desc" style="color: #1A1A1A !important">מומחיות בתכנון ועיצוב מגורים, משרדים וחללים מסחריים.</p>
+            </div>
+            <!-- Stat 2 -->
+            <div class="index-stats-section__stat-card">
+                <div class="index-stats-section__stat-number">150+</div>
+                <h3 class="index-stats-section__stat-title">פרויקטים שהושלמו</h3>
+                <p class="index-stats-section__stat-desc" style="color: #1A1A1A !important">תכנון אדריכלי ועיצוב פנים בהתאמה אישית מלאה.</p>
+            </div>
+            <!-- Stat 3 -->
+            <div class="index-stats-section__stat-card">
+                <div class="index-stats-section__stat-number">40+</div>
+                <h3 class="index-stats-section__stat-title">ספקים ובעלי מקצוע</h3>
+                <p class="index-stats-section__stat-desc" style="color: #1A1A1A !important">רשת שותפים אמינה המבטיחה ביצוע מדויק ואיכותי.</p>
+            </div>
+            <!-- Stat 4 -->
+            <div class="index-stats-section__stat-card">
+                <div class="index-stats-section__stat-number">5</div>
+                <h3 class="index-stats-section__stat-title">שלבי תכנון אישיים</h3>
+                <p class="index-stats-section__stat-desc" style="color: #1A1A1A !important">תהליך מובנה וליווי צמוד משלב הרעיון ועד למפתח.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Divider: Deep Walnut Curved Clip-Path Sweep -->
+    <div class="index-stats-section__divider-wrapper" data-no-icon-edit="true" aria-hidden="true">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1200,120 L1200,30 Q900,80 600,20 Q300,-20 0,30 L0,120 Z" fill="#4A5240"/>
+        </svg>
+    </div>
+</section>
+
+<section data-band-index="7" id="cta" class="index-cta-section" data-layout-spec="בית-cta">
+  <div class="cta-container">
+    <!-- START Column: Persuasive Copy -->
+    <div class="cta-copy">
+      <h2>בואו נתחיל לתכנן את הבית שחלמתם עליו</h2>
+      <p>מרחב מגורים מעוצב הוא לא רק קירות וריהוט – הוא המקום שבו החיים שלכם מתרחשים. בסטודיו של עטרה סבג אנחנו הופכים חללים ריקים לבתים חמים, פונקציונליים ומלאי אופי, תוך הקשבה אמיתית לצרכים ולחלומות שלכם.</p>
+      <ul class="cta-reassurance">
+        <li>
+          <span class="reassurance-icon" aria-hidden="true">
+            <svg data-element-type="icon" data-icon-type="svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </span>
+          <span>פגישת היכרות ראשונית ללא עלות – נבין יחד את החזון, הצרכים והתקציב</span>
+        </li>
+        <li>
+          <span class="reassurance-icon" aria-hidden="true">
+            <svg data-element-type="icon" data-icon-type="svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </span>
+          <span>ליווי אישי ומותאם לאורח החיים שלכם – מתכנון אדריכלי ועד לפרט האחרון בעיצוב הפנים</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- END Column: Contact Form -->
+    <div class="cta-form-wrapper">
+      <form class="contact-form">
+        <div class="form-field">
+          <label for="cta-name">שם מלא</label>
+          <input type="text" id="cta-name" name="name" placeholder="השם שלך" required>
+        </div>
+        <div class="form-field">
+          <label for="cta-email">דוא״ל</label>
+          <input type="email" id="cta-email" name="email" placeholder="[business_email]" required>
+        </div>
+        <div class="form-field">
+          <label for="cta-phone">טלפון</label>
+          <input type="tel" id="cta-phone" name="phone" placeholder="[business_phone]" required>
+        </div>
+        <div class="form-field">
+          <label for="cta-message">הודעה</label>
+          <textarea id="cta-message" name="message" rows="4" placeholder="אשמח לשמוע על הפרויקט שלכם..." required></textarea>
+        </div>
+        <div class="privacy-consent">
+          <label class="privacy-consent-label">
+            <input type="checkbox" name="privacy_consent" class="privacy-consent-checkbox" required>
+            <span>קראתי ואני מסכים/ה ל<a href="/terms" target="_blank">תנאי השימוש</a> ול<a href="/privacy" target="_blank">מדיניות הפרטיות</a></span>
+          </label>
+        </div>
+        <button type="submit" class="cta-submit-btn">שליחת בקשה לפגישת ייעוץ</button>
+      </form>
+    </div>
+  </div>
+</section>
+  </main>
+  
+  <footer class="site-footer" dir="rtl">
+  <div class="footer-container">
+    <!-- Top Section: Multi-Column Grid -->
+    <div class="footer-grid">
+      
+      <!-- Column 1: Company Info -->
+      <div class="footer-col footer-company-col">
+        <img src="/assets/architecture-interior-design-logo.webp" alt="עטרה סבג אדריכלות ועיצוב פנים" class="logo">
+        <p class="footer-tagline">סטודיו בוטיק לתכנון אדריכלי ועיצוב פנים המשלב דיוק, חומריות טבעית ואווירה חמה.</p>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="footer-col footer-links-col">
+        <h4>ניווט מהיר</h4>
+        <ul class="footer-links">
+          <li><a href="#services">שירותים</a></li>
+          <li><a href="#benefits">יתרונות</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#portfolio">תיק עבודות</a></li>
+          <li><a href="#testimonials">המלצות</a></li>
+          <li><a href="#stats">נתונים</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Contact Info -->
+      <div class="footer-col footer-contact-col">
+        <h4>צרו קשר</h4>
+        <ul class="footer-contact">
+          <li>
+            <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+            <span class="contact-text"><a href="mailto:[business_email]">[business_email]</a></span>
+          </li>
+          <li>
+            <span class="contact-icon"><i class="fas fa-phone"></i></span>
+            <span class="contact-text"><a href="tel:[business_phone]">[business_phone]</a></span>
+          </li>
+          <li><a href="/"><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+            <span class="contact-text">[business_address]</span></a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Business Hours (MANDATORY) -->
+      <div class="footer-col footer-hours-col">
+        <h4>שעות פעילות</h4>
+        <ul class="footer-hours">
+          <li><a href="/"><span class="hours-day">ימים א'–ה'</span> <span class="hours-time">09:00–18:00</span></a></li>
+          <li><a href="/"><span class="hours-day">יום ו'</span> <span class="hours-time">09:00–13:00</span></a></li>
+          <li><a href="/"><span class="hours-day">שבת</span> <span class="hours-time">סגור</span></a></li>
+        </ul>
+      </div>
+
+      <!-- Column 5: Social Media (MANDATORY) -->
+      <div class="footer-col footer-social-col">
+        <h4>עקבו אחרינו</h4>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook" data-zappy-social-placeholder="true"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram" data-zappy-social-placeholder="true"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="WhatsApp" data-zappy-social-placeholder="true"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        <p class="footer-copyright">© 2026 עטרה סבג אדריכלות ועיצוב פנים. כל הזכויות שמורות.</p>
+      </div>
+      <div class="footer-bottom-right">
+        <nav class="footer-legal">
+          <a href="/privacy">מדיניות פרטיות</a>
+          <span class="legal-divider">|</span>
+          <a href="/terms">תנאי שימוש</a>
+          <span class="legal-divider">|</span>
+          <a href="/accessibility">נגישות</a>
+        </nav>
+        <a href="https://zappy5.com" target="_blank" class="zappy-attribution">נוצר באמצעות Zappy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+  
+  <a href="https://wa.me/[whatsapp_handle]" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <div data-integration="accessibility:toolbar"></div>
+
+    <script src="/script.js"></script>
+
+    <script id="zappy-mobile-submenu-script">
+    (function() {
+      function initMobileSubmenuToggles() {
+        if (window.innerWidth > 768) {
+          document.querySelectorAll('.mobile-submenu-toggle').forEach(function(btn) { btn.remove(); });
+          document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) { menu.classList.remove('mobile-expanded'); });
+          return;
+        }
+        var items = document.querySelectorAll('.nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu)');
+        items.forEach(function(li) {
+          if (li.querySelector('.mobile-submenu-toggle')) return;
+          var submenu = li.querySelector('.sub-menu');
+          var parentLink = li.querySelector(':scope > a');
+          if (!submenu || !parentLink) return;
+          var toggleBtn = document.createElement('button');
+          toggleBtn.className = 'mobile-submenu-toggle';
+          toggleBtn.setAttribute('aria-label', 'Toggle submenu');
+          toggleBtn.setAttribute('type', 'button');
+          parentLink.insertAdjacentElement('afterend', toggleBtn);
+          toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) {
+              if (menu !== submenu) { menu.classList.remove('mobile-expanded'); var t = menu.parentElement.querySelector('.mobile-submenu-toggle'); if(t) t.classList.remove('expanded'); }
+            });
+            submenu.classList.toggle('mobile-expanded');
+            toggleBtn.classList.toggle('expanded');
+          });
+        });
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileSubmenuToggles); }
+      else { initMobileSubmenuToggles(); }
+      var resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(initMobileSubmenuToggles, 250); });
+      // Re-initialize when mobile menu becomes visible (MutationObserver)
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes') {
+            var target = mutation.target;
+            if (target.classList && (target.classList.contains('active') || target.classList.contains('open'))) {
+              setTimeout(initMobileSubmenuToggles, 100);
+            }
+          }
+        });
+      });
+      setTimeout(function() {
+        document.querySelectorAll('.mobile-menu, .nav-menu, #navMenu, nav').forEach(function(menu) {
+          observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
+        });
+      }, 500);
+    })();
+    </script>
+
+    <script id="zappy-navbar-scroll-effect">
+    (function(){
+      var nb=document.querySelector('nav.navbar,.navbar:not(.zappy-catalog-menu)');
+      var cm=document.querySelector('.zappy-catalog-menu,#zappy-catalog-menu');
+      if(!nb)return;
+      var fb='rgba(243,235,221,0.85)';
+      var th=60;
+      var rs=getComputedStyle(document.documentElement);
+      var td=rs.getPropertyValue('--text-dark').trim()||'#1a1a1a';
+      var tl=rs.getPropertyValue('--text-light').trim()||'#ffffff';
+      var st=true?td:tl;
+      nb.style.transition='background 0.3s ease,backdrop-filter 0.3s ease,-webkit-backdrop-filter 0.3s ease,box-shadow 0.3s ease';
+      if(cm)cm.style.transition='background 0.3s ease,backdrop-filter 0.3s ease,-webkit-backdrop-filter 0.3s ease';
+      var neSel='a,.navbar-brand,.navbar-brand a,.dropdown-toggle,.mobile-toggle,.phone-header-btn,.mobile-hamburger-btn,.mobile-close-btn,.mobile-submenu-toggle,.nav-link';
+      var skipCls=['cart-link','login-link','nav-search-toggle','search-toggle'];
+      function sTC(c,clr){var els=c.querySelectorAll(neSel);for(var i=0;i<els.length;i++){var sk=false;if(els[i].closest('.sub-menu')||els[i].closest('.dropdown-menu')){sk=true;}for(var j=0;j<skipCls.length;j++){if(els[i].classList.contains(skipCls[j])){sk=true;break;}}if(!sk)els[i].style.setProperty('color',clr,'important');}}
+      function cTC(c){var els=c.querySelectorAll(neSel);for(var i=0;i<els.length;i++){if(els[i].closest('.sub-menu')||els[i].closest('.dropdown-menu'))continue;els[i].style.removeProperty('color');}}
+      function applyScrolled(){
+        nb.classList.add('scrolled');
+        if(window.innerWidth>768){
+          nb.style.setProperty('--frosted-text',st);
+          nb.style.setProperty('background-image','none','important');
+          nb.style.setProperty('background-color',fb,'important');
+          nb.style.backdropFilter='blur(12px)';nb.style.webkitBackdropFilter='blur(12px)';nb.style.boxShadow='0 2px 16px rgba(0,0,0,0.12)';
+          sTC(nb,st);
+        }
+        if(cm){cm.classList.add('scrolled');if(window.innerWidth>768){cm.style.setProperty('background',fb,'important');cm.style.setProperty('backdrop-filter','blur(12px)','important');cm.style.setProperty('-webkit-backdrop-filter','blur(12px)','important');sTC(cm,st);}}
+      }
+      function onS(){
+        if(window._zappyNavNoDarkHero) return;
+        if(window.innerWidth<=768){nb.classList.remove('scrolled');cTC(nb);if(cm){cm.classList.remove('scrolled');cTC(cm);}return;}
+        var y=window.scrollY||window.pageYOffset;
+        if(y>th){
+          nb.classList.add('scrolled');nb.style.setProperty('background-color',fb,'important');nb.style.setProperty('background-image','none','important');
+          nb.style.setProperty('--frosted-text',st);nb.style.backdropFilter='blur(12px)';nb.style.webkitBackdropFilter='blur(12px)';nb.style.boxShadow='0 2px 16px rgba(0,0,0,0.12)';
+          sTC(nb,st);
+          if(cm){cm.classList.add('scrolled');cm.style.setProperty('background',fb,'important');cm.style.setProperty('backdrop-filter','blur(12px)','important');cm.style.setProperty('-webkit-backdrop-filter','blur(12px)','important');sTC(cm,st);}
+        }else{
+          nb.classList.remove('scrolled');nb.style.setProperty('background-color','transparent','important');nb.style.removeProperty('background-image');
+          nb.style.removeProperty('--frosted-text');nb.style.backdropFilter='none';nb.style.webkitBackdropFilter='none';nb.style.boxShadow='none';
+          cTC(nb);
+          if(cm){cm.classList.remove('scrolled');cm.style.setProperty('background','transparent','important');cm.style.setProperty('backdrop-filter','none','important');cm.style.setProperty('-webkit-backdrop-filter','none','important');cTC(cm);}
+        }
+      }
+      function sLum(rv,gv,bv){rv/=255;gv/=255;bv/=255;rv=rv<=0.03928?rv/12.92:Math.pow((rv+0.055)/1.055,2.4);gv=gv<=0.03928?gv/12.92:Math.pow((gv+0.055)/1.055,2.4);bv=bv<=0.03928?bv/12.92:Math.pow((bv+0.055)/1.055,2.4);return 0.2126*rv+0.7152*gv+0.0722*bv;}
+      window.addEventListener('scroll',onS,{passive:true});
+      window.addEventListener('resize',onS,{passive:true});
+      onS();
+      var heroEl=document.querySelector('section[class*="hero"],[data-hero-type],main:not(.courses-page-main)>section:first-child');
+      var hasDH=false;
+      if(heroEl){var hCs=getComputedStyle(heroEl);var hBI=hCs.backgroundImage;if(hBI&&hBI!=='none'){if(hBI.indexOf('url(')!==-1){var hM2=hCs.backgroundColor.match(/\d+/g);if(hM2&&hM2.length>=3){hasDH=sLum(parseInt(hM2[0]),parseInt(hM2[1]),parseInt(hM2[2]))<0.4;}else{hasDH=true;}}else if(hBI.indexOf('gradient')!==-1){var cM=hBI.match(/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/g);if(cM&&cM.length>0){var tLm=0;for(var ci=0;ci<cM.length;ci++){var pts=cM[ci].match(/\d+/g);tLm+=sLum(parseInt(pts[0]),parseInt(pts[1]),parseInt(pts[2]));}hasDH=(tLm/cM.length)<0.4;}else{hasDH=true;}}else{hasDH=true;}}else{var hM=hCs.backgroundColor.match(/\d+/g);if(hM&&hM.length>=3){hasDH=sLum(parseInt(hM[0]),parseInt(hM[1]),parseInt(hM[2]))<0.4;}}}
+      if(!hasDH){window.removeEventListener('scroll',onS);window.removeEventListener('resize',onS);applyScrolled();window._zappyNavNoDarkHero=true;}
+    })();
+    </script>
+</body>
+</html>

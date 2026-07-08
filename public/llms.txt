@@ -1,0 +1,70 @@
+# עטרה סבג אדריכלות ועיצוב פנים — Generative Engine Optimization Map
+
+> An architecture and interior design business seeking a landing page to showcase their professional services. The brand operates in a creative and aesthetic field, likely emphasizing visual excellence, spatial design expertise, and refined taste in both architectural planning and interior styling.
+
+---
+
+## Pages
+
+### בית
+https://-e3938594.zappy5.app
+מחפשים אדריכלית ומעצבת פנים שתהפוך את הבית או העסק שלכם ליצירת מופת? בסטודיו של עטרה סבג תקבלו תכנון אדריכלי ועיצוב פנים יוקרתי, מדויק ומלא השראה. לחצו עכשיו לחוויית עיצוב בלתי נשכחת!
+
+### תודה שפניתם אלינו
+https://-e3938594.zappy5.app/thank-you
+עטרה סבג אדריכלות ועיצוב פנים - תודה שפניתם אלינו
+
+## Legal & Policy
+
+### Privacy Policy
+https://-e3938594.zappy5.app/privacy
+Information about how user data is collected, stored, and protected.
+
+### Terms & Conditions
+https://-e3938594.zappy5.app/terms
+Legal terms describing service usage, rights, and policies.
+
+### Accessibility Statement
+https://-e3938594.zappy5.app/accessibility
+Information about WCAG compliance and accessibility features.
+
+---
+
+## How to Contact Us
+
+- (No contact details configured yet.)
+
+### Contact form
+- URL: https://-e3938594.zappy5.app
+- Endpoint: https://-e3938594.zappy5.app/api/email/contact-form
+- Method: POST
+- Content-Type: application/json
+- Fields:
+  - `name` (text)
+  - `email` (email)
+  - `phone` (tel)
+  - `message` (textarea)
+  - `privacy_consent` (checkbox)
+
+---
+
+# Business Context (for LLM understanding)
+
+## About עטרה סבג אדריכלות ועיצוב פנים
+An architecture and interior design business seeking a landing page to showcase their professional services. The brand operates in a creative and aesthetic field, likely emphasizing visual excellence, spatial design expertise, and refined taste in both architectural planning and interior styling.
+
+## Target Audience
+- בעלי בתים יוקרתיים
+- משקיעי נדל"ן
+- זוגות צעירים מקצוענים
+
+## Industry
+Architecture & Interior Design
+
+---
+
+# Machine-readable feeds
+
+- Sitemap (XML): https://-e3938594.zappy5.app/sitemap.xml
+- Robots: https://-e3938594.zappy5.app/robots.txt
+- Flattened page text (for LLMs): https://-e3938594.zappy5.app/llms-full.txt
